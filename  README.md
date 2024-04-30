@@ -1,0 +1,70 @@
+# Inciando os serviços
+
+## De permissao de execuçao aos arquivos .sh
+chmod +x start.sh
+chmod +x stop.sh
+
+
+## Executo o arquivo start.sh para iniciar os serviços
+``
+./start.sh
+``
+
+## Verifique se deu tudo certo acessando
+## Os usuários e sennhas se encontram dentro dos arquivos envs
+localhost:9001 e localhost:8080 
+
+## Para executar os arquivos python, vamos criar um ambiente virutal
+## Necessário ter o python3 e pip instalado na máquina
+
+``
+# Instalando o pacote para ambiente virutal
+pip install virtualenv
+# Criando um ambiente virtual
+python -m venv ./venv 
+``
+
+## Ativando o ambiente virutal
+# Habilitando o terminal para executar comandos dentro do ambiente virtual
+`` 
+source venv/bin/activate
+``
+
+## Desativando o ambiente virual
+`` 
+# Desabilitando o terminal para executar comandos dentro do ambiente virtual
+source deactivate
+``
+
+## Conexão jdb com o trino utilizando dbeaver 
+![alt text](dbeaver-trino.png)
+
+
+# Configurando MinIO e Trino
+
+
+## Navegue para User - < Access Keys  e crie uma nova chave e faça o download da chave
+![alt text](access-key-minio.png)
+
+## Altere da access_key e secret_key do arquivo s3_functions.py com os valores do json
+
+![alt text](client-minio.png)
+
+## Altere também a configuraçao do trino nos arquivos:
+conf/metastore-site.xml
+etc/minio.properties
+
+![alt text](config-xml-s3.png)
+![alt text](catalog-minio-trino.png)
+
+
+# Executando os comandos
+
+Abra o arquivo app -> app.ipynb  e selecione a venv criada
+
+
+### OBS: os ips precisam ser da rede docker
+`
+ipconfig
+`
+usar ip docker0
