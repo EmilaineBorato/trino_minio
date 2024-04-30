@@ -6,9 +6,10 @@ chmod +x stop.sh
 
 
 ## Executo o arquivo start.sh para iniciar os serviços
-``
+```bash
 ./start.sh
-``
+```
+
 
 ## Verifique se deu tudo certo acessando
 ## Os usuários e sennhas se encontram dentro dos arquivos envs
@@ -17,24 +18,24 @@ localhost:9001 e localhost:8080
 ## Para executar os arquivos python, vamos criar um ambiente virutal
 ## Necessário ter o python3 e pip instalado na máquina
 
-``
+```bash
 # Instalando o pacote para ambiente virutal
 pip install virtualenv
 # Criando um ambiente virtual
 python -m venv ./venv 
-``
+```
 
 ## Ativando o ambiente virutal
 # Habilitando o terminal para executar comandos dentro do ambiente virtual
-`` 
+```bash
 source venv/bin/activate
-``
+```
 
 ## Desativando o ambiente virual
-`` 
+```bash
 # Desabilitando o terminal para executar comandos dentro do ambiente virtual
 source deactivate
-``
+```
 
 ## Conexão jdb com o trino utilizando dbeaver 
 ![alt text](dbeaver-trino.png)
@@ -64,7 +65,7 @@ Abra o arquivo app -> app.ipynb  e selecione a venv criada
 
 
 ### OBS: os ips precisam ser da rede docker
-`
+```bash
 ipconfig
-`
+```
 usar ip docker0
