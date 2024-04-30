@@ -1,0 +1,28 @@
+version: '3.7'
+
+# Settings and configurations that are common for all containers
+x-minio-common: &minio-common
+  image: quay.io/minio/minio
+  command: server --console-address ":9001" http://minio{1...1}/data{1...2}
+  expose:
+    - "9000"
+    - "9001"
+  env_file: 
+    - .env
+  healthcheck:
+    test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
+    interval: 30s
+    timeout: 20s
+    retries: 3
+
+services:
+  minio1:
+    <<: *minio-common
+    hostname: minio1
+    volumes:
+      - ../volumes/db-minio/data1-1:/data1
+      - ../volumes/db-minio/data1-2:/data2
+    restart: always
+    ports:
+      - "9000:9000"
+      - "9001:9001"
