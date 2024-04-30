@@ -5,14 +5,14 @@ chmod +x start.sh
 chmod +x stop.sh
 
 
-## Executo o arquivo start.sh para iniciar os serviços
+## Execute o arquivo start.sh para iniciar os serviços
 ```bash
 ./start.sh
 ```
 
 
-## Verifique se deu tudo certo acessando
-## Os usuários e sennhas se encontram dentro dos arquivos envs
+## Verifique o acesso
+## Os usuários e senhas se encontram dentro dos arquivos envs
 localhost:9001 e localhost:8080 
 
 ## Para executar os arquivos python, vamos criar um ambiente virutal
@@ -26,14 +26,13 @@ python -m venv ./venv
 ```
 
 ## Ativando o ambiente virutal
-# Habilitando o terminal para executar comandos dentro do ambiente virtual
+### Habilitando o terminal para executar comandos dentro do ambiente virtual
 ```bash
 source venv/bin/activate
 ```
 
 ## Desativando o ambiente virual
 ```bash
-# Desabilitando o terminal para executar comandos dentro do ambiente virtual
 source deactivate
 ```
 
