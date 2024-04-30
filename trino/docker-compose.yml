@@ -1,0 +1,45 @@
+version: '3'
+services:
+  mariadb:
+    hostname: mariadb
+    image: mariadb:10.5.8
+    ports:
+      - 3306:3306
+    env_file: 
+      - .env-mysql
+    volumes:
+      - ../volumes/mysql:/var/lib/mysql
+    networks:
+      - trino-network
+    restart: always
+
+  hive-metastore:
+    hostname: hive-metastore
+    image: bitsondatadev/hive-metastore:latest #kydim/hivemetastore:latest #'bitsondatadev/hive-metastore:latest'
+    ports:
+      - '9083:9083' # Metastore Thrift
+    volumes:
+      - ./conf/metastore-site.xml:/opt/apache-hive-metastore-3.0.0-bin/conf/metastore-site.xml:ro
+      #  - ./conf/metastore-site.xml:/opt/hive-metastore/conf/metastore-site.xml:ro
+    environment:
+      METASTORE_DB_HOSTNAME: mariadb
+    command: ["/opt/hive-metastore/bin/start-metastore"]
+    depends_on:
+      - mariadb
+    networks:
+      - trino-network
+    restart: always
+
+  trino:
+    hostname: trino
+    image: 'trinodb/trino:351'
+    ports:
+      - '8080:8080'
+    volumes:
+      - ./etc:/usr/lib/trino/etc:ro
+    networks:
+      - trino-network
+
+networks:
+  trino-network:
+    driver: bridge      
