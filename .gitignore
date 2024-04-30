@@ -1,0 +1,18 @@
+*.pyc
+__pycache__/
+
+# Vscode
+.vscode/
+.logs/*
+.logs
+
+# Files
+trino_minio.pptx
+volumes/*
+venv/*
+venv
+volumes
+
+
+
+

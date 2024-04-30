@@ -1,0 +1,1 @@
+docker-compose -f minio/docker-compose.yml down && docker-compose -f trino/docker-compose.yml down
